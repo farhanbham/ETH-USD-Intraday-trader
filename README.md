@@ -33,14 +33,14 @@ The dataset was downloaded using Binance's API. The dataset consists of hourly E
 
 We take several steps for processing our data to be used in our LSTM model:
 
-**Scaling**
-When scaling we ensure we scale our test data with parameters used to scale our training data. This is to ensure no data leakage leading to biased estimates. 
+**Scaling -**
+ When scaling we ensure we scale our test data with parameters used to scale our training data. This is to ensure no data leakage leading to biased estimates. 
 
-**Creating Sequences**
-Our LSTM model requires batches of sequences for training. We create sequences of data including OHLCV data in which the length can be adjusted through the variable SEQ_LENGTH. A corresponding target value, the close price in 24 hours, is also created. 
+**Creating Sequences -**
+ Our LSTM model requires batches of sequences for training. We create sequences of data including OHLCV data in which the length can be adjusted through the variable SEQ_LENGTH. A corresponding target value, the close price in 24 hours, is also created. 
 
-**Auto-Encoder**
-To prevent overfitting, we implement an autoencoder model. This reduces the dimensionality of our data to a specified dimension which can adjusted through the dimension variable. This model encodes the sequences into our specificied dimensionality and then decodes it. Although we already have our encoded data, we still need to decode it. This is so we can identify if encoded data retains meaningful information. We optimise our autoencoder model hyperparameters using Bayesian optimisation. This method learns from previous results in an attempt to reduce hyperparamter tuning speed as this is a time-intensive process.
+**Auto-Encoder -**
+ To prevent overfitting, we implement an autoencoder model. This reduces the dimensionality of our data to a specified dimension which can adjusted through the dimension variable. This model encodes the sequences into our specificied dimensionality and then decodes it. Although we already have our encoded data, we still need to decode it. This is so we can identify if encoded data retains meaningful information. We optimise our autoencoder model hyperparameters using Bayesian optimisation. This method learns from previous results in an attempt to reduce hyperparamter tuning speed as this is a time-intensive process.
 
 
 ---
@@ -67,13 +67,11 @@ We evalaute the models forecasting performance using MSE, mean aboslute error (M
 
 Here we create a trading system which buys, sells or holds its position every hour. Trades are made on the hourly ETH-USD close prices from January 2023 to June 2024. A slippage value of 0.0015 (0.15%) is applied to every trade to account for Binance's trading fee (0.1%) and margin loss (we estimate 0.05%). 
 
-**Buy Signal**
+**Buy Signal -**
+ We generate a buy signal by dividing the predicted price by the current price. If this value is above a certain threshold (eg. 1.04 or 4%) a buy signal is produced and the asset is purchased at the current price in the simulation if funds are available. 
 
-We generate a buy signal by dividing the predicted price by the current price. If this value is above a certain threshold (eg. 1.04 or 4%) a buy signal is produced and the asset is purchased at the current price in the simulation if funds are available. 
-
-**Sell Signal**
-
-Our trading system sells when our position has increased by a certain threshold or if we have an open position beyond a certain maximum holding period. 
+**Sell Signal -**
+ Our trading system sells when our position has increased by a certain threshold or if we have an open position beyond a certain maximum holding period. 
 
 We are able to adjust position size, take_profit, max_hold_time and signal_strength parameter values.
 
