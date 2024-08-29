@@ -68,9 +68,11 @@ We evalaute the models forecasting performance using MSE, mean aboslute error (M
 Here we create a trading system which buys, sells or holds its position every hour. Trades are made on the hourly ETH-USD close prices from January 2023 to June 2024. A slippage value of 0.0015 (0.15%) is applied to every trade to account for Binance's trading fee (0.1%) and margin loss (we estimate 0.05%). 
 
 **Buy Signal**
+
 We generate a buy signal by dividing the predicted price by the current price. If this value is above a certain threshold (eg. 1.04 or 4%) a buy signal is produced and the asset is purchased at the current price in the simulation if funds are available. 
 
 **Sell Signal**
+
 Our trading system sells when our position has increased by a certain threshold or if we have an open position beyond a certain maximum holding period. 
 
 We are able to adjust position size, take_profit, max_hold_time and signal_strength parameter values.
