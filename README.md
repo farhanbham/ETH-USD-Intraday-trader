@@ -1,4 +1,4 @@
-d# Long-Short-Term-Memory (LSTM) Forecasting for Buy Signal Generation
+# Long-Short-Term-Memory (LSTM) Forecasting for Buy Signal Generation
 
 > Task: Maximise Sharpe ratio using buy signals generated from our LSTM model.
 
