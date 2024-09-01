@@ -18,7 +18,7 @@ In this project we attempt to generate buy signals by using an LSTM to predict t
 - [Conclusion](#conclusion)
 
 
---
+---
 
 
 ## Dataset
