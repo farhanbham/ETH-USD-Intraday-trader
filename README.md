@@ -1,4 +1,4 @@
-# Buy Signal Generation Using LSTM Forecasting
+# Intraday Trading Using LSTM Forecasting Model
 
 > Task: Maximise Sharpe ratio using buy signals generated from our LSTM model.
 
@@ -40,7 +40,7 @@ In this stage we make sure to scale our test data with parameters used to scale 
  Our LSTM model requires batches of sequences for training. We create batches of sequences of OHLCV data in which the length can be adjusted through the variable SEQ_LENGTH. A corresponding target value (the close price in 24 hours) is also created. 
 
 **Auto-Encoder -**
- To prevent overfitting, we implement an autoencoder model. This reduces the dimensionality of our data to a specified dimension which can adjusted through the dimension variable (see the implementation of this idea [here](https://www.researchgate.net/publication/349804504_Predicting_stock_returns_of_Tehran_exchange_using_LSTM_neural_network_and_feature_engineering_technique). This model encodes the sequences into our specificied dimensionality and then attempts to decode it back to the orignal input values. Although we already have our encoded data we still need to decode it so we can identify if the encoded data retains the orignal information. We optimise our autoencoder model hyperparameters using Bayesian optimisation. This method learns from previous results in an attempt to reduce hyperparamter tuning speed as this is a time-intensive process.
+ To prevent overfitting, we implement an autoencoder model. This reduces the dimensionality of our data to a specified dimension which can adjusted through the dimension variable (see the implementation of this idea [here](https://www.researchgate.net/publication/349804504_Predicting_stock_returns_of_Tehran_exchange_using_LSTM_neural_network_and_feature_engineering_technique)). This model encodes the sequences into our specificied dimensionality and then attempts to decode it back to the orignal input values. Although we already have our encoded data we still need to decode it so we can identify if the encoded data retains the orignal information. We optimise our autoencoder model hyperparameters using Bayesian optimisation. This method learns from previous results in an attempt to reduce hyperparamter tuning speed as this is a time-intensive process.
 
 
 ---
